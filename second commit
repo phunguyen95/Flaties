@@ -1,0 +1,13 @@
+const validator = require('node-mongoose-validator');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+//Notification
+NotificationSchema   = new Schema({
+    seeker: {type:mongoose.Schema.Types.ObjectId, ref:'User'}, //information of seeker
+    owner: [{type:mongoose.Schema.Types.ObjectId, ref:'House'}], // information of owner 
+    message: {type: String}, // any description of the notification message 
+    created_at: {type: Date, default: Date.now},
+    emailToOwner: {type:mongoose.Schema.Types.ObjectId, ref:'User'}, //email that will be sent to the Owner, notifing a match
+    emailToSeeker {type:mongoose.Schema.Types.ObjectId, ref:'User'} // email that will be sent to the Seeker, notofying a match
+});
